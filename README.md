@@ -4,6 +4,9 @@
 
 The Knowledge Base Manager (KBM) is a command-line tool for managing articles and their associated data. It allows you to perform various operations such as loading, creating, editing, deleting, and searching articles.
 
+To install requiremens, run `pip install -r requirements.txt`.
+To start, run the `main.py` file with python.
+
 ### Available Commands
 
 - `load [filename]`: Loads a JSON file containing article data.
