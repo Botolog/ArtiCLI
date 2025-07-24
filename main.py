@@ -1,37 +1,6 @@
 from funcs import *
 from data import *
 
-DATA:dict = {}
-
-MANAGER = ArticleManager()
-
-def loadData(filename:str="data.json"):
-    global DATA
-    new_data = readData(filename)
-    DATA = new_data
-    MANAGER.reload(DATA)
-
-def displayArticles(option = "search", *filters):
-    MANAGER.display(option, " ".join(filters))
-
-def createArticle(id, *title):
-    new_article = MANAGER.create(id)
-    if len(title) != 0:
-        title = " ".join(title)
-        new_article.title = title
-    else:
-        new_article.title = input("Article Title: ")
-    
-    new_article.content = input("Article Content: ")
-    last = "/"
-    while last != "":
-        last = input("Add Tag to Article (Empty to finish): ")
-        if last != "":
-            new_article.addtag(last)
-
-
-
-# todo: complete thoes commands and add help for each with syntax
 COMMANDS = {
     "load": Command("load", loadData),
     "show": Command("show", displayArticles),
@@ -39,7 +8,7 @@ COMMANDS = {
     "save": Command("save", MANAGER.save), #save (current state) filename
     "create": Command("create", createArticle), #create [id] (following by costume input for convinience)
     "delete": Command("delete", MANAGER.delete), #delete [id]
-    # "edit": , #edit [id] [field] [new_val]
+    "edit": Command("edit", editField), #edit [id] [field] [new_val]
     # "addtag": , #addtag [id] [tagname]
     # "remtag": , #remtag [id] [tagname]
 
