@@ -1,24 +1,13 @@
 from funcs import *
 from data import *
+from commands import *
 
-DATA:dict = {}
 
-MANAGER = TicketManager()
 
-def updateData(filename:str):
-    global DATA
-    new_data = readData(filename)
-    DATA = new_data
-    MANAGER.reload(DATA)
+# todo: complete thoes commands and add help for each with syntax
 
-def displayTickets(option = "search", filters = None):
-    MANAGER.display(option, filters)
 
-COMMANDS = {
-    "update": Command("update", updateData),
-    "show": Command("show", displayTickets),
-    "clear": Command("clear", MANAGER.clear)
-}
+
 
 
 while True:

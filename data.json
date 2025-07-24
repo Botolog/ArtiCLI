@@ -1,52 +1,57 @@
 {
-  "tickets": [
+  "articles": [
     {
-      "ticketId": "T1001",
-      "subject": "Login issue",
-      "description": "User cannot login due to forgotten password.",
-      "status": "open",
-      "created_at": "2025-03-25T10:30:00Z"
+      "id": "A1",
+      "title": "How to Reset Your Password",
+      "content": "Follow these steps to reset your password...",
+      "tags": [
+        "account",
+        "password",
+        "security"
+      ]
     },
     {
-      "ticketId": "T1002",
-      "subject": "Payment failure",
-      "description": "Payment did not go through for order #456.",
-      "status": "closed",
-      "created_at": "2025-03-20"
+      "id": "A2",
+      "title": "Troubleshooting Login Issues",
+      "content": "If you experience issues logging in, try the following steps...",
+      "tags": [
+        "login",
+        "troubleshooting"
+      ]
     },
     {
-      "ticketId": "T1003",
-      "subject": "",
-      "description": "Error 500 encountered on checkout page.",
-      "status": "in progress",
-      "created_at": "2025/03/22 12:00:00"
+      "id": "A3",
+      "title": "Payment Processing Guide",
+      "content": "None",
+      "tags": [
+        "payment",
+        "checkout"
+      ]
     },
     {
-      "ticketId": "T1004",
-      "description": "Missing subject field example.",
-      "status": "open",
-      "created_at": "2025-03-23T09:00:00Z"
+      "id": "A4",
+      "title": "None",
+      "content": "This article explains how to configure email notifications.",
+      "tags": [
+        "notifications",
+        "email"
+      ]
     },
     {
-      "ticketId": "T1005",
-      "subject": "Bug in dashboard",
-      "description": "Dashboard does not update automatically.",
-      "status": "invalid",
-      "created_at": "Invalid Date"
+      "id": "A5",
+      "title": "Using the Dashboard",
+      "content": "Learn how to navigate and utilize the dashboard effectively.",
+      "tags": [
+        "dashboard"
+      ]
     },
     {
-      "ticketId": "T1006",
-      "subject": "Slow response",
-      "description": "API response time exceeds 5 seconds.",
-      "status": "pending",
-      "created_at": "2025-03-24T15:45:00Z"
-    },
-    {
-      "ticketId": "T1007",
-      "subject": "Feature request: Dark mode",
-      "description": "Add dark mode option for the support portal.",
-      "status": "open",
-      "created_at": "2025-03-26T08:15:00Z"
+      "id": "A6",
+      "title": "FAQ",
+      "content": "Common questions and answers about our support system.",
+      "tags": [
+        "support"
+      ]
     }
   ]
 }
