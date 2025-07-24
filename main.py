@@ -1,4 +1,3 @@
-from funcs import *
 from data import *
 from commands import *
 
