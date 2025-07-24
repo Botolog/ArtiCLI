@@ -21,9 +21,14 @@ class ArticleManager:
                 return article
         raise ValueError(f"No Article found with id {id}")
 
-    def save(self, filemame:str="copy.json"):
+    def save(self, filename:str=None):
+        global DEFAULT_NAME
+        if filename == None: filename = DEFAULT_NAME
+        else: DEFAULT_NAME = filename
+        
+
         dump = json.dumps({"articles":self.articles}, indent=2, default=json_serializer)
-        with open(filemame, "w") as output:
+        with open(filename, "w") as output:
             output.write(dump)
 
     def create(self, id):
@@ -43,7 +48,7 @@ class ArticleManager:
         for i in range(len(self.articles)):
             if self.articles[i].id == id:
                 return self.articles.pop(i)
-        raise ValueError(f"Article id {id} not found")
+        raise ValueError(f"Article id \"{id}\" not found")
 
     def display(self, option, filters):
         table = PrettyTable()
@@ -89,8 +94,18 @@ class Article:
             )
         
 
+        elif (option == "tags"):
+            for tag in filters:
+                if not(tag in self.tags):
+                    return False
+            return True
+            
         elif (option == "tag"):
-            return (filters.lower() in self.tags)
+            for tag in filters:
+                if (tag in self.tags):
+                    return True
+            return False
+            # return (filters.lower() in self.tags)
         
         else:
             raise RuntimeError(f"no filter mode named \"{option}\"")
@@ -101,12 +116,14 @@ class Article:
     def addtag(self, tag_name):
         if not (tag_name in self.tags):
             self.tags.append(tag_name)
+        else:
+            raise ValueError(f"tag \"{tag_name}\" already exists")
 
     def remtag(self, tag_name):
         if (tag_name in self.tags):
             self.tags.remove(tag_name)
         else:
-            raise ValueError(f"tag \"{tag_name}\" wasn't fount in {self.tags}")
+            raise ValueError(f"tag \"{tag_name}\" wasn't fount in \"{self.tags}\"")
 
     def edit(self, field, new_value):
         if (field == "title"): self.title = new_value
@@ -133,44 +150,12 @@ def json_serializer(object):
         return object.toDict()
     
 
-
-from funcs import *
+DEFAULT_NAME = "data.json"
+def setName(name):
+    global DEFAULT_NAME
+    DEFAULT_NAME = name
 
 DATA:dict = {}
 
 MANAGER = ArticleManager()
 
-def loadData(filename:str="data.json"):
-    global DATA
-    new_data = readData(filename)
-    DATA = new_data
-    MANAGER.reload(DATA)
-
-def displayArticles(option = "search", *filters):
-    MANAGER.display(option, " ".join(filters))
-
-def createArticle(id, *title):
-    new_article = MANAGER.create(id)
-    if len(title) != 0:
-        title = " ".join(title)
-        new_article.title = title
-    else:
-        new_article.title = input("Article Title: ")
-    
-    new_article.content = input("Article Content: ")
-    last = "/"
-    while last != "":
-        last = input("Add Tag to Article (Empty to finish): ")
-        if last != "":
-            new_article.addtag(last)
-
-def editField(id, field, *new_value):
-    if len(new_value) != 0:
-        value = " ".join(new_value)
-    else:
-        value = "None"
-    
-    MANAGER.edit(id, field, value)
-
-
-# todo: complete thoes commands and add help for each with syntax

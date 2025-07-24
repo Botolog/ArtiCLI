@@ -49,7 +49,9 @@
       "id": "A6",
       "title": "FAQ",
       "content": "Common questions and answers about our support system.",
-      "tags": []
+      "tags": [
+        "support"
+      ]
     }
   ]
 }

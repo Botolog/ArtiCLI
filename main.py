@@ -1,20 +1,15 @@
 from funcs import *
 from data import *
+from commands import *
 
-COMMANDS = {
-    "load": Command("load", loadData),
-    "show": Command("show", displayArticles),
-    "clear": Command("clear", MANAGER.clear),
-    "save": Command("save", MANAGER.save), #save (current state) filename
-    "create": Command("create", createArticle), #create [id] (following by costume input for convinience)
-    "delete": Command("delete", MANAGER.delete), #delete [id]
-    "edit": Command("edit", editField), #edit [id] [field] [new_val]
-    # "addtag": , #addtag [id] [tagname]
-    # "remtag": , #remtag [id] [tagname]
 
-}
 
-loadData()
+# todo: complete thoes commands and add help for each with syntax
+
+
+
+
+
 while True:
     try:
         command_string = input("> ").split(" ")
